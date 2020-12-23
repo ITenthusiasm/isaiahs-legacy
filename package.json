@@ -4,7 +4,10 @@
   "description": "Just some example code, really",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-db": "json-server --watch db.json --port 5000"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
   },
   "repository": {
     "type": "git",
