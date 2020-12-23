@@ -1,0 +1,19 @@
+{
+  "name": "isaiahs-legacy",
+  "version": "1.0.0",
+  "description": "Just some example code, really",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITenthusiasm/isaiahs-legacy.git"
+  },
+  "author": "Isaiah Thomason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ITenthusiasm/isaiahs-legacy/issues"
+  },
+  "homepage": "https://github.com/ITenthusiasm/isaiahs-legacy#readme"
+}
