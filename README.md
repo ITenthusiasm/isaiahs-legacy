@@ -4,7 +4,7 @@ Hello and welcome to a random guy's attempt to document some new findings that h
 
 There are a broad range of things I want to cover, but here are a few big ones...
 
-- [ ] Markdown (`.md`) files (what you're reading right now) and documentation
+- [x] Markdown (`.md`) files (what you're reading right now) and documentation
 - [ ] Configuring frontend frameworks (React, Vue) on your own or with help (CRA, Vue CLI)
 - [ ] Using TypeScript with frontend frameworks
 - [ ] Potentially useful folder structures
