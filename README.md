@@ -9,7 +9,7 @@ There are a broad range of things I want to cover, but here are a few big ones..
 - [ ] Using TypeScript with frontend frameworks
 - [ ] Potentially useful folder structures
 - [ ] Useful tools/packages for working with mock data
-- [ ] Provide references to useful/respectable people int he React community
+- [x] Provide references to useful/respectable people int he React community
 
 **_DESCRIBE THE STRUCTURE OF THE PROJECT_**
 
