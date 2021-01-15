@@ -4,6 +4,7 @@ export interface UserInfo {
 }
 
 export interface TodoDetails {
+  id: number;
   userId: string;
   text: string;
 }

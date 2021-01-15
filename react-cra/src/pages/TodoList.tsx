@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Todo } from "../components";
 import { addTodo, getTodos } from "../store/todos/actions";
-import { TodoDetails } from "../types";
 import { RootState } from "../store/types";
 
 function TodoList() {
@@ -21,7 +20,7 @@ function TodoList() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const todo: TodoDetails = { userId: user!.id, text: newTodo.trim() };
+    const todo = { userId: user!.id, text: newTodo.trim() };
 
     if (todo.text) dispatch(addTodo(todo));
     setNewTodo("");
@@ -48,8 +47,8 @@ function TodoList() {
       </form>
 
       <div>
-        {todos.map((todo, i) => (
-          <Todo key={i} text={todo} />
+        {todos.map((todo) => (
+          <Todo key={todo.id} {...todo} />
         ))}
       </div>
     </div>

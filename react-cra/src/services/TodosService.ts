@@ -4,13 +4,16 @@ import { TodoDetails } from "../types";
 const apiClient = axios.create({ baseURL: "http://localhost:5000" });
 
 const TodosService = {
-  async postTodo(todo: TodoDetails) {
+  async postTodo(todo: Omit<TodoDetails, "id">) {
     const { data } = await apiClient.post("todos", todo);
-    return data.text;
+    return { id: data.id, text: data.text };
+  },
+  async deleteTodo(todoId: number) {
+    return apiClient.delete(`todos/${todoId}`);
   },
   async getTodos(userId: string) {
     const { data } = await apiClient.get(`todos?userId=${userId}`);
-    return data.map(({ text }: TodoDetails) => text);
+    return data.map(({ id, text }: TodoDetails) => ({ id, text }));
   },
 };
 

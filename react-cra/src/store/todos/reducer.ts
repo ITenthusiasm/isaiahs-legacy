@@ -5,7 +5,9 @@ import initialState from "../initialState";
 function todos(state = initialState.todos, action: TodosAction): TodosState {
   switch (action.type) {
     case TodosTypes.ADD_TODO_SUCCESS:
-      return [...state, action.text];
+      return [...state, action.todo];
+    case TodosTypes.REMOVE_TODO_SUCCESS:
+      return state.filter((todo) => todo.id !== action.todoId);
     case TodosTypes.GET_TODOS_SUCCESS:
       return action.todos;
     default:
