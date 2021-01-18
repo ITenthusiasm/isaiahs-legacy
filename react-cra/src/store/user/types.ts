@@ -1,3 +1,5 @@
+import { GlobalAction } from "../types";
+
 /** Structure of the state in the User Reducer */
 export type UserState = { id: string; name: string } | null;
 
@@ -32,4 +34,5 @@ export type UserAction =
   | AddUserSuccessAction
   | AddUserFailureAction
   | GetUserSuccessAction
-  | GetUserFailureAction;
+  | GetUserFailureAction
+  | GlobalAction;

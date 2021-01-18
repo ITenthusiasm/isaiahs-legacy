@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, RouteComponentProps } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
+import { logoutUser } from "../store/globalActions";
+import { RootState } from "../store/types";
 import { UserInfo } from "../types";
 
 function Home({ history }: RouteComponentProps) {
+  const user = useSelector(mapStoreState);
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
@@ -29,9 +32,36 @@ function Home({ history }: RouteComponentProps) {
     history.push("/todos");
   }
 
+  function logout() {
+    dispatch(logoutUser());
+  }
+
+  if (user) {
+    return (
+      <div style={styles.container}>
+        <h2>Home</h2>
+
+        <div style={styles.info}>
+          Welcome! Click
+          <NavLink style={styles.links} to="/todos">
+            here
+          </NavLink>
+          to see your todos
+        </div>
+
+        <div style={styles.info}>
+          Not you?
+          <span style={styles.links} onClick={logout}>
+            Logout
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={styles.container}>
-      <h2>login</h2>
+      <h2>Login</h2>
 
       <div>
         <div>
@@ -61,7 +91,11 @@ function Home({ history }: RouteComponentProps) {
   );
 }
 
-type HomeStyles = "container" | "labels" | "actions";
+function mapStoreState(store: RootState) {
+  return store.user;
+}
+
+type HomeStyles = "container" | "labels" | "links" | "info" | "actions";
 
 const styles: Record<HomeStyles, React.CSSProperties> = {
   container: {
@@ -72,6 +106,16 @@ const styles: Record<HomeStyles, React.CSSProperties> = {
   labels: {
     display: "block",
     marginTop: "0.5rem",
+  },
+  links: {
+    color: "blue",
+    textDecoration: "none",
+    margin: "0rem 0.25rem",
+    cursor: "pointer",
+  },
+  info: {
+    fontSize: "1.25rem",
+    margin: "0.5rem",
   },
   actions: {
     display: "flex",

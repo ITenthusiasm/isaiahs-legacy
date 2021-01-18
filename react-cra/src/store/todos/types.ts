@@ -1,4 +1,5 @@
 import { TodoDetails } from "../../types";
+import { GlobalAction } from "../types";
 
 /** Structure of the state in the Todos Reducer */
 export type TodosState = Omit<TodoDetails, "userId">[];
@@ -47,4 +48,5 @@ export type TodosAction =
   | RemoveTodoSuccessAction
   | RemoveTodoFailureAction
   | GetTodosSuccessAction
-  | GetTodosFailureAction;
+  | GetTodosFailureAction
+  | GlobalAction;

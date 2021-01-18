@@ -19,3 +19,14 @@ export type Thunk<ReturnType = void> = ThunkAction<
 
 /** Extensions for the dispatch type. Used specifically for testing thunks. */
 export type DispatchExts = ThunkDispatch<RootState, void, AnyAction>;
+
+/* FOR "GLOBAL ACTIONS" */
+export enum GlobalActionTypes {
+  LOGOUT_USER = "LOGOUT_USER",
+}
+
+interface LogoutUserAction {
+  type: GlobalActionTypes.LOGOUT_USER;
+}
+
+export type GlobalAction = LogoutUserAction;
