@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
 import { logoutUser } from "../store/globalActions";
 import { RootState } from "../store/types";
 import { UserInfo } from "../types";
 
 function Home() {
-  const history = useHistory();
-
   const user = useSelector(mapStoreState);
   const dispatch = useDispatch();
 
@@ -31,7 +29,6 @@ function Home() {
 
     if (action === "sign-up") await dispatch(addUser(userInfo));
     if (action === "sign-in") await dispatch(getUser(userInfo));
-    history.push("/todos");
   }
 
   function logout() {

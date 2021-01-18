@@ -2,6 +2,7 @@ import { UserService } from "../../services";
 import { UserInfo } from "../../types";
 import { Thunk } from "../types";
 import { UserTypes, UserState } from "./types";
+import history from "../../router/history";
 
 // Action Creators
 const addUserSuccess = (user: UserState) => ({
@@ -33,6 +34,7 @@ export function addUser(userInfo: UserInfo): Thunk {
 
       const user = await UserService.postUser(userInfo);
       dispatch(addUserSuccess(user));
+      history.push("/todos");
     } catch (err) {
       dispatch(addUserFailure());
       console.error(err);
@@ -50,6 +52,7 @@ export function getUser(userInfo: UserInfo): Thunk {
       }
 
       dispatch(getUserSuccess(user));
+      history.push("/todos");
     } catch (err) {
       dispatch(getUserFailure());
       console.error(err);
