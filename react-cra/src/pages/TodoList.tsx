@@ -28,7 +28,7 @@ function TodoList() {
 
   if (!user) {
     console.log("You arrived at this page before a user was loaded! 😔");
-    return <div>Login to see your todos!</div>;
+    return <div style={styles.info}>Login to see your todos!</div>;
   }
 
   return (
@@ -62,7 +62,7 @@ function mapStoreState(state: RootState) {
   };
 }
 
-type TodoListStyles = "container" | "labels" | "button";
+type TodoListStyles = "container" | "labels" | "info" | "button";
 
 const styles: Record<TodoListStyles, React.CSSProperties> = {
   container: {
@@ -73,6 +73,11 @@ const styles: Record<TodoListStyles, React.CSSProperties> = {
   labels: {
     display: "block",
     marginTop: "0.5rem",
+  },
+  info: {
+    fontSize: "1.25rem",
+    textAlign: "center",
+    margin: "0.5rem",
   },
   button: {
     marginLeft: "2rem",
