@@ -1,0 +1,5 @@
+{
+  "overrides": [
+    { "files": ["**/*reducer.ts"], "options": { "printWidth": 110 } }
+  ]
+}

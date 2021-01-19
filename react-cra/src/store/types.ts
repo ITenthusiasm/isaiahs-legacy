@@ -2,11 +2,13 @@ import { Action, AnyAction } from "redux";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { UserState } from "./user/types";
 import { TodosState } from "./todos/types";
+import { NotificationsState } from "./notifications/types";
 
 /** The root state of the redux application */
 export interface RootState {
   user: UserState;
   todos: TodosState;
+  notifications: NotificationsState;
 }
 
 /** A thunk used for redux-thunk */

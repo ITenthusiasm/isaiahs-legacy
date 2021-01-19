@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { Home, TodoList } from "./pages";
+import { NotificationsContainer } from "./components";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/todos" component={TodoList} />
         </Switch>
+
+        <NotificationsContainer />
       </main>
     </>
   );

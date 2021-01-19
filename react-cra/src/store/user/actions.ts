@@ -1,8 +1,9 @@
+import { addNotification } from "../notifications/actions";
 import { UserService } from "../../services";
+import history from "../../router/history";
 import { UserInfo } from "../../types";
 import { Thunk } from "../types";
 import { UserTypes, UserState } from "./types";
-import history from "../../router/history";
 
 // Action Creators
 const addUserSuccess = (user: UserState) => ({
@@ -28,7 +29,7 @@ export function addUser(userInfo: UserInfo): Thunk {
   return async function (dispatch) {
     try {
       if (await UserService.userExists(userInfo.username)) {
-        dispatch(addUserFailure());
+        dispatch(addNotification("Username already exists."));
         return;
       }
 
@@ -47,7 +48,7 @@ export function getUser(userInfo: UserInfo): Thunk {
     try {
       const user = await UserService.getUser(userInfo);
       if (!user) {
-        dispatch(getUserFailure());
+        dispatch(addNotification("Invalid username or password."));
         return;
       }
 
