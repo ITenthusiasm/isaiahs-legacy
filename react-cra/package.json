@@ -49,5 +49,28 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{ts,tsx}",
+      "!<rootDir>/src/*",
+      "<rootDir>/src/App.tsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 80,
+        "branches": 80,
+        "functions": 75,
+        "lines": 80
+      }
+    },
+    "transform": {
+      "\\.tsx?$": [
+        "babel-jest",
+        {
+          "configFile": "./test-utils/.babelrc"
+        }
+      ]
+    }
   }
 }

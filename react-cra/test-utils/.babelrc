@@ -1,0 +1,9 @@
+/* This is for Jest only. CRA creates a babel config for the application.
+Notice that none of these packages are explicitly listed in our package.json
+file because CRA has already installed them, thus making them accessible in 
+the node_modules folder. */
+
+{
+  "presets": ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
