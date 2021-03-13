@@ -1,5 +1,8 @@
 {
   "overrides": [
-    { "files": ["**/*reducer.ts"], "options": { "printWidth": 110 } }
+    {
+      "files": ["**/test-utils/mock-data/generator.ts", "**/*reducer.ts"],
+      "options": { "printWidth": 110 }
+    }
   ]
 }

@@ -2,8 +2,8 @@
   "singleQuote": false,
   "overrides": [
     {
-      "files": ["test-utils/mock-data/generator.ts"],
-      "options": { "printWidth": 100 }
+      "files": ["**/test-utils/mock-data/generator.ts", "**/*reducer.ts"],
+      "options": { "printWidth": 110 }
     }
   ]
 }
