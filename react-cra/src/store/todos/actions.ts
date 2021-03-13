@@ -1,35 +1,32 @@
 import { TodosService } from "../../services";
 import { TodoDetails } from "../../types";
 import { Thunk } from "../types";
-import { TodosTypes, TodosState } from "./types";
+import { TodosAction, TodosTypes, TodosState } from "./types";
 
 // Action Creators
-const addTodoSuccess = (todo: Omit<TodoDetails, "userId">) => ({
-  type: TodosTypes.ADD_TODO_SUCCESS,
-  todo,
-});
+function addTodoSuccess(todo: Omit<TodoDetails, "userId">): TodosAction {
+  return { type: TodosTypes.ADD_TODO_SUCCESS, todo };
+}
 
-const addTodoFailure = () => ({
-  type: TodosTypes.ADD_TODO_FAILURE,
-});
+function addTodoFailure(): TodosAction {
+  return { type: TodosTypes.ADD_TODO_FAILURE };
+}
 
-const removeTodoSuccess = (todoId: number) => ({
-  type: TodosTypes.REMOVE_TODO_SUCCESS,
-  todoId,
-});
+function removeTodoSuccess(todoId: number): TodosAction {
+  return { type: TodosTypes.REMOVE_TODO_SUCCESS, todoId };
+}
 
-const removeTodoFailure = () => ({
-  type: TodosTypes.REMOVE_TODO_FAILURE,
-});
+function removeTodoFailure(): TodosAction {
+  return { type: TodosTypes.REMOVE_TODO_FAILURE };
+}
 
-const getTodosSuccess = (todos: TodosState) => ({
-  type: TodosTypes.GET_TODOS_SUCCESS,
-  todos,
-});
+function getTodosSuccess(todos: TodosState): TodosAction {
+  return { type: TodosTypes.GET_TODOS_SUCCESS, todos };
+}
 
-const getTodosFailure = () => ({
-  type: TodosTypes.GET_TODOS_FAILURE,
-});
+function getTodosFailure(): TodosAction {
+  return { type: TodosTypes.GET_TODOS_FAILURE };
+}
 
 // Thunks
 export function addTodo(todo: Omit<TodoDetails, "id">): Thunk {

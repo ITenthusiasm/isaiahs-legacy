@@ -3,26 +3,24 @@ import { UserService } from "../../services";
 import history from "../../router/history";
 import { UserInfo } from "../../types";
 import { Thunk } from "../types";
-import { UserTypes, UserState } from "./types";
+import { UserAction, UserTypes, UserState } from "./types";
 
 // Action Creators
-const addUserSuccess = (user: UserState) => ({
-  type: UserTypes.ADD_USER_SUCCESS,
-  user,
-});
+function addUserSuccess(user: UserState): UserAction {
+  return { type: UserTypes.ADD_USER_SUCCESS, user };
+}
 
-const addUserFailure = () => ({
-  type: UserTypes.ADD_USER_FAILURE,
-});
+function addUserFailure(): UserAction {
+  return { type: UserTypes.ADD_USER_FAILURE };
+}
 
-const getUserSuccess = (user: UserState) => ({
-  type: UserTypes.GET_USER_SUCCESS,
-  user,
-});
+function getUserSuccess(user: UserState): UserAction {
+  return { type: UserTypes.GET_USER_SUCCESS, user };
+}
 
-const getUserFailure = () => ({
-  type: UserTypes.GET_USER_FAILURE,
-});
+function getUserFailure(): UserAction {
+  return { type: UserTypes.GET_USER_FAILURE };
+}
 
 // Thunks
 export function addUser(userInfo: UserInfo): Thunk {
