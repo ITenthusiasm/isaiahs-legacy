@@ -34,7 +34,24 @@ File/folder structure is a very simple thing. However, when done well, it can gr
 This is not the only way to structure your files and folders, but it's common between frontend frameworks like React and Vue.
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  components/
+    Icon.tsx
+    Header.tsx
+    Card.tsx
+    index.ts
+  pages/
+    Home.tsx
+    About.tsx
+    index.ts
+  router/
+    history.ts
+  services/
+    UserService.ts
+    index.ts
+  store/
+    index.ts
+  index.tsx
 ```
 
 The `src` folder is the root folder of your frontend _application_ (this is not the same as the project folder, which contains `src`). By (current) React convention, the entry point of your application should be `src/index.jsx` (or `src/index.tsx`).
@@ -47,13 +64,13 @@ The `pages` folder contains any components that represent an entire page of your
 
 The `router` folder contains logic for setting up your router, like initializing the `history`. (Components that act as enhanced `Route`s do not go here. They go under `components`.) I picked this up from Vue. In React, if your application is simple enough, you may not need a `router` folder.
 
-The `store` folder contains all logic related to your store. This folder will look different depending on which state management library you use. (We're using redux.)
-
 The `services` folder encapsulates the logic you need for making API calls.
+
+The `store` folder contains all logic related to your store. This folder will look different depending on which state management library you use. (We're using redux.)
 
 ### Barrel Files
 
-You'll notice that [most of] my `src/*` folders have an `index.ts` file that simply re-exports the files [that I want exposed] within that folder. These are called `barrel files`, and they're useful for several reasons.
+You'll notice that [most of] my `src/*` folders have an `index.ts` file that simply re-exports the files [that I want exposed] within that folder. (See the code for examples.) These are called `barrel files`, and they're useful for several reasons.
 
 **Firstly**, they simplify your import statements. Why write something like this:
 
@@ -112,7 +129,22 @@ I can recommend this structure with confidence from my personal experiences. It 
 This structure looks something like this:
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  components/
+    Icon.tsx
+    ...
+  pages/
+    Home.tsx
+    ...
+  ...
+test/
+  components/
+    Icon.test.tsx
+    ...
+  pages/
+    Home.test.tsx
+    ...
+  ...
 ```
 
 and it is perhaps the most inconvenient of all options. The reason is that it makes it incredibly difficult to locate relevant tests, _especially_ as your application grows. Let's say you have a complicated application with even more directories beyond the ones in this project. Each of these folders also has several nested folders, and every folder has a significant number of files.
@@ -126,7 +158,16 @@ When using the "one `__tests__` folder per directory" approach, you don't run in
 This structure looks something like this:
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  components/
+    Icon.tsx
+    Icon.test.tsx
+    ...
+  pages/
+    Home.tsx
+    Home.test.tsx
+    ...
+  ...
 ```
 
 This one isn't as bad as the previous one. However, as your application grows, this approach still becomes inconvenient. More specifically, having your test files adjacent to the files they test _doubles the size of a directory_. This is _really bad news_ for a large application. While you're looking for specific files to help you build a new feature, your eyes start to become visually overloaded with test files that you don't care about. Similarly, when you're looking for a test, your eyes become visually overloaded by feature files.
@@ -138,13 +179,38 @@ Ultimately, you can do whatever you want. But the "one `__tests__` folder per di
 **One quick note on test file structures for _components_**: Life is easy if your React components and their styles are in a single file, like they are in this project. But... what if you want to use CSS for your components? Well...hopefully you'd use a simple solution (perhaps [emotion](https://emotion.sh/docs/introduction)) that enables you to declare CSS styles easily within the same file. But what if you can't or don't want to? Then your folder structure under `components` may look something like this:
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  components/
+    Icon/
+      Icon.tsx
+      Icon.css
+      index.ts
+    Card/
+      Card.tsx
+      Card.css
+      index.ts
+    ...
+  ...
 ```
 
-This would make the "one `__tests__` folder per directory" approach rather in convenient. In this situation, I would recommend moving the `__tests__` directory one folder up. So your directory would look like this:
+This would make the "one `__tests__` folder per directory" approach rather in convenient for your components. In this situation, I would recommend moving the `__tests__` directory one folder up. So your directory would look like this:
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  components/
+    __tests__/
+      Icon.test.tsx
+      Card.test.tsx
+    Icon/
+      Icon.tsx
+      Icon.css
+      index.ts
+    Card/
+      Card.tsx
+      Card.css
+      index.ts
+    ...
+  ...
 ```
 
 This still enables you to easily access your tests while maintaining the folder component structure that you need. If you're using Vue, you won't need to worry about that dilemma.
@@ -156,7 +222,21 @@ I already mentioned that it's good to set aside a `store` folder for everything 
 Yet again, after watching Kent C. Dodds, I recommend having a single folder under `store` for every reducer in your application. Within these sub folders should be `action`, `reducer`, and `types` files for your actions, reducer logic, and action types (and/or TypeScript types) related to a given reducer. In the `store/index` file, you can export your redux store. From personal preference, I also encourage putting your store's initial state, root reducer, and "store globals" directly in the `store` folder. As you'll see, our application follows this structure:
 
 ```
-INSERT FOLDER STRUCTURE PICTURE HERE
+src/
+  ...
+  store/
+    reducer1/
+      actions.ts
+      reducer.ts
+      types.ts
+    reducer2/
+      actions.ts
+      reducer.ts
+      types.ts
+    ...
+    index.ts
+    initialState.ts
+    rootReducer.ts
 ```
 
 There are two main reasons I encourage this folder structure. First, it helps you reason about redux better. I have seen many a people -- professional or not -- misuse redux because they don't understand how it truly works. For instance, many people don't understand that a combined redux store is composed of multiple reducers that manage their own _portion_ of the total state. Divinding your `store` folder by reducers helps reinforce this proper understanding of redux.
@@ -174,7 +254,20 @@ This is perhaps the most disadvantageous file/folder structure you can use for y
 The structure looks something like this:
 
 ```
-INSERT FOLDER STRUCTURE HERE
+src/
+  components/
+    Icon/
+      Icon.tsx
+      Icon.actions.ts
+      Icon.reducer.ts
+      Icon.types.ts
+    Card/
+      Card.tsx
+      Card.actions.ts
+      Card.reducer.ts
+      Card.types.ts
+  store/
+    index.ts
 ```
 
 When you collocate redux files with your component, you risk losing a proper understanding of what the redux store really is: A global store made up of one or more reducers. This is especially a risk for any newcomers to React + Redux.
@@ -188,7 +281,21 @@ Finally, this folder structure just creates visual overload in the file tree. Yo
 The structure looks something like this
 
 ```
-INSERT FOLDER STRUCTURE HERE
+src/
+  ...
+  store/
+    actions/
+      actions1.ts
+      actions2.ts
+    reducer/
+      reducer1.ts
+      reducer2.ts
+    types/
+      types1.ts
+      types2.ts
+    index.ts
+    initialState.ts
+    rootReducer.ts
 ```
 
 The nice thing about this folder structure is that it slightly helps you reason about redux the proper way: one global store with one or more reducers. The disadvantage of this folder structure is that it creates visual overload. It does this in two ways:
@@ -209,8 +316,6 @@ For these situations, I recommend creating a folder called `test-utils` (or some
 ### The `public` Folder
 
 Use of the `public` folder may vary slightly depending on whether you build your application from scratch or use tools like CRA. Since this part of the project was built using CRA, see the [docs](https://create-react-app.dev/docs/using-the-public-folder/) for more info.
-
----
 
 # Hooks
 
