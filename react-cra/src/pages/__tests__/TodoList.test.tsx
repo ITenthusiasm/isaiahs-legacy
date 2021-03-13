@@ -4,6 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { initializeStore } from "../../../test-utils/helpers";
+import generate from "../../../test-utils/mock-data/generator";
 import { TodosService } from "../../services";
 import { TodoList } from "..";
 
@@ -44,21 +45,16 @@ describe("Todo List", () => {
   });
 
   it("Displays the user's todos obtained from the database", async () => {
-    const message1 = "Clean my room";
-    const message2 = "Make plans for wife";
-
-    const mockResponse = [
-      { id: 1, text: message1 },
-      { id: 2, text: message2 },
-    ];
+    const mockResponse = generate("todoList");
 
     jest.spyOn(TodosService, "getTodos").mockResolvedValue(mockResponse);
 
     const store = initializeStore(defaultState);
     const { getByText, findByText } = renderComponentWithStore(store);
 
-    const todo1 = await findByText(message1);
-    const todo2 = getByText(message2);
+    const [firstTodo, secondTodo] = mockResponse;
+    const todo1 = await findByText(firstTodo.text);
+    const todo2 = getByText(secondTodo.text);
 
     expect(todo1).toBeInTheDocument();
     expect(todo2).toBeInTheDocument();
@@ -85,8 +81,8 @@ describe("Todo List", () => {
   });
 
   it("Adds the user's submitted todo to their list", async () => {
-    const message = "Get groceries";
-    const mockResponse = { id: 1, text: message };
+    const mockResponse = generate("todoItem");
+    const { text } = mockResponse;
 
     jest.spyOn(TodosService, "postTodo").mockResolvedValueOnce(mockResponse);
     jest.spyOn(TodosService, "getTodos").mockResolvedValueOnce([]);
@@ -98,21 +94,22 @@ describe("Todo List", () => {
       findByText,
     } = renderComponentWithStore(store);
 
-    expect(queryByText(message)).not.toBeInTheDocument();
+    expect(queryByText(text)).not.toBeInTheDocument();
 
     const input = getByLabelText(/add todo/i);
     const button = queryByText("add") as HTMLElement;
 
-    userEvent.type(input, message);
+    userEvent.type(input, text);
     userEvent.click(button);
 
-    const newTodo = await findByText(message);
+    const newTodo = await findByText(text);
     expect(newTodo).toBeInTheDocument();
   });
 
   it("Clears the input whenever the submit button is clicked", () => {
-    const message = "This is my todo";
-    const mockResponse = { id: 1, text: message };
+    const mockResponse = generate("todoItem");
+    const { text } = mockResponse;
+
     jest.spyOn(TodosService, "postTodo").mockResolvedValue(mockResponse);
     jest.spyOn(TodosService, "getTodos").mockResolvedValueOnce([]);
 
@@ -129,13 +126,13 @@ describe("Todo List", () => {
 
     // With valid text
     userEvent.clear(input);
-    userEvent.type(input, message);
+    userEvent.type(input, text);
     userEvent.click(button);
     expect(input).toHaveValue("");
   });
 
   it("Removes a todo when its delete icon is clicked", async () => {
-    const todoToDelete = { id: 1, text: "Delete this" };
+    const todoToDelete = generate("todoItem");
 
     jest.spyOn(TodosService, "getTodos").mockResolvedValue([todoToDelete]);
     jest.spyOn(TodosService, "deleteTodo").mockImplementation();

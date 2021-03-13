@@ -7,7 +7,7 @@ import { NotificationsContainer } from "..";
 
 // Increase the amount of time Jest can wait before timing out
 // Note: We need at least 5000 ms.
-jest.setTimeout(5500);
+jest.setTimeout(5100);
 
 describe("Notifications Container", () => {
   /* Helper Functions */

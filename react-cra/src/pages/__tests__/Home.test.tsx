@@ -5,13 +5,14 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { initializeStore } from "../../../test-utils/helpers";
+import generate from "../../../test-utils/mock-data/generator";
 import { NotificationsContainer } from "../../components";
 import history from "../../router/history";
 import { UserService } from "../../services";
 import { Home } from "..";
 
 describe("Home", () => {
-  const fakeUser = { id: "FAKE_ID", name: "FAKE_NAME" };
+  const fakeUser = generate("user");
   const defaultState = { user: null, notifications: [] };
 
   beforeEach(() => {

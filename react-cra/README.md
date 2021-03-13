@@ -387,6 +387,20 @@ You don't need to worry about building tools for this on your own. Many tools al
 
 One good option is [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell). Its test runner is available for free on npm (`npm install -D cypress`). More importantly, [it has support in the testing library family](https://testing-library.com/docs/cypress-testing-library/intro/). You'll notice some slight differences, but it's more or less the same as the other members of the testing library family. What's great about this is that: 1) You won't have to write your own functions for finding something in the DOM, and 2) You'll work with a simple and re-usable API. Again, transferrable skills! You'll see some examples of Cypress Testing Library here.
 
+### Mock Data and APIs
+
+In an ideal world, if you're performing E2E tests or just testing out your new frontend features, you'd be able to wire up your frontend to your backend to verify that everything behaves as expected. Unfortunately, things don't always turn out this way. It's possible for your frontend to be finished before the backend. If you're developing both, this isn't a big problem. But if a separate team is developing the API your application consumes, then this will cause some trouble.
+
+Thankfully, you can still create useful tests by taking advantage of mock data and mock APIs.
+
+**For mock data**: [Json Schema Faker](https://github.com/json-schema-faker/json-schema-faker) has proven especially useful for generating randomized data that fits a certain structure. All you do is define a schema and tell Json Schema Faker to generate a random object matching your schema. Examples of this exist in this project.
+
+If you don't need to generate large object structures, [Faker.js](https://github.com/marak/Faker.js/) may suffice. If you go with this option, you can create utility functions that generate randomized data. (Json Schema Faker actually makes use of the API from Faker.js.)
+
+The nice thing about randomly generated mock data is that you can easily use it in all of your tests. Any integration tests with mocked out API responses will be able to use the data. Additionally, any mock APIs you create will also be able to take advantage of your randomly generated mock data. If you want more information about these packages, you can find them on GitHub and locate their documentation. Whichever mock data package you choose for your project, I've found it most helpful to place my utilities for creating mock data under a `test-utils` folder.
+
+**For mock APIs**: [Json Server](https://github.com/typicode/json-server) is another incredibly helpful tool. It enables you to create a simple server for performing CRUD operations with JSON entities. You can view its documentation on GitHub for the details. But in short, posting JSON objects to the server allows you to dynamically create routes with resources that you can operate on. All resources are stored in a JSON file that you specify. Examples can be found here or in the official documentation.
+
 ### A Different Way to Think about Testing
 
 Whether you're convinced of using the testing library tools or not, it's important to establish a proper mindset when it comes to testing the frontend. More specifically, it's important to understand that just as frontend development is different from backend development, so frontend testing is different from backend testing.
