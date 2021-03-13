@@ -51,10 +51,11 @@ src/
     index.ts
   store/
     index.ts
+  App.tsx
   index.tsx
 ```
 
-The `src` folder is the root folder of your frontend _application_ (this is not the same as the project folder, which contains `src`). By (current) React convention, the entry point of your application should be `src/index.jsx` (or `src/index.tsx`).
+The `src` folder is the root folder of your frontend _application_ (this is not the same as the project folder, which contains `src`). By (current) React convention, the entry point of your application should be `src/index.jsx` (or `src/index.tsx`). Also by convention, `src/App.tsx` is often the root _component_ of your application (excluding providers that wrap your entire app).
 
 The `components` folder contains all of the components used for your application. It _does not_ contain components that represent an entire page of your application.
 
