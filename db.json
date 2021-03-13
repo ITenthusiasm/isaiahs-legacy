@@ -1,4 +1,21 @@
 {
-  "users": [],
-  "todos": []
+  "users": [
+    {
+      "username": "friendly_user",
+      "password": "friendly_user",
+      "id": 1
+    }
+  ],
+  "todos": [
+    {
+      "userId": 1,
+      "text": "Wash the tomatoes",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "text": "Eat Swiss cheese!",
+      "id": 4
+    }
+  ]
 }
