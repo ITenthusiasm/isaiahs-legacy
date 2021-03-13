@@ -6,8 +6,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "check-types": "tsc --noEmit",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "reset-json-db": "cd .. && npm run reset-json-db",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "^0.21.1",

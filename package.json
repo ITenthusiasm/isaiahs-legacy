@@ -4,7 +4,8 @@
   "description": "Just some example code, really",
   "main": "index.js",
   "scripts": {
-    "start-db": "json-server --watch db.json --port 5000"
+    "start-db": "json-server --watch db.json --port 5000",
+    "reset-json-db": "node scripts/reset-json-db"
   },
   "devDependencies": {
     "json-server": "^0.16.3"

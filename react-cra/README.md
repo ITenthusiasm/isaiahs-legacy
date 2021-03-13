@@ -402,6 +402,8 @@ The nice thing about randomly generated mock data is that you can easily use it 
 
 **For mock APIs**: [Json Server](https://github.com/typicode/json-server) is another incredibly helpful tool. It enables you to create a simple server for performing CRUD operations with JSON entities. You can view its documentation on GitHub for the details. But in short, posting JSON objects to the server allows you to dynamically create routes with resources that you can operate on. All resources are stored in a JSON file that you specify. Examples can be found here or in the official documentation.
 
+Tip: Including some kind of script to easily reset your mock data/API can improve your development speed! We've set up a simple example of a reset-db script in the _absolute root_ project folder (ie. the folder that contains all 4 sub-projects). It may seem cumbersome to expand, but remember that you can easily scale this up by implementing something like JSON Schema Faker. Thus, expanding the data shouldn't be difficult or tedious. (If the data is interconnected, you may need to make your setup functions and schemas just _slightly_ smarter.)
+
 ### A Different Way to Think about Testing
 
 Whether you're convinced of using the testing library tools or not, it's important to establish a proper mindset when it comes to testing the frontend. More specifically, it's important to understand that just as frontend development is different from backend development, so frontend testing is different from backend testing.
