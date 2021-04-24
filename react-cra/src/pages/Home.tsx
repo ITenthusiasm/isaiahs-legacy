@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
 import { logoutUser } from "../store/globalActions";
 import { RootState } from "../store/types";
-import { UserInfo } from "../types";
 
 function Home() {
   const user = useSelector(mapStoreState);
@@ -24,7 +23,7 @@ function Home() {
   async function login(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (!username || !password) return;
 
-    const userInfo: UserInfo = { username, password };
+    const userInfo = { username, password };
     const action = event.currentTarget.name;
 
     if (action === "sign-up") await dispatch(addUser(userInfo));

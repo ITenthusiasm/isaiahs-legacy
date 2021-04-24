@@ -23,7 +23,7 @@ function getUserFailure(): UserAction {
 }
 
 // Thunks
-export function addUser(userInfo: UserInfo): Thunk {
+export function addUser(userInfo: Omit<UserInfo, "id">): Thunk {
   return async function (dispatch) {
     try {
       if (await UserService.userExists(userInfo.username)) {
@@ -41,7 +41,7 @@ export function addUser(userInfo: UserInfo): Thunk {
   };
 }
 
-export function getUser(userInfo: UserInfo): Thunk {
+export function getUser(userInfo: Omit<UserInfo, "id">): Thunk {
   return async function (dispatch) {
     try {
       const user = await UserService.getUser(userInfo);
