@@ -386,7 +386,9 @@ There are times when unit/integration tests just won't cut it for your applicati
 
 You don't need to worry about building tools for this on your own. Many tools already exist out there. (And to certain old friends of mine, something far more efficient and time-saving than that Python-bot method exists.)
 
-One good option is [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell). Its test runner is available for free on npm (`npm install -D cypress`). More importantly, [it has support in the testing library family](https://testing-library.com/docs/cypress-testing-library/intro/). You'll notice some slight differences, but it's more or less the same as the other members of the testing library family. What's great about this is that: 1) You won't have to write your own functions for finding something in the DOM, and 2) You'll work with a simple and re-usable API. Again, transferrable skills! You'll see some examples of Cypress Testing Library here.
+One good option is [Cypress](https://docs.cypress.io/guides/overview/why-cypress.html#In-a-nutshell). Its test runner is available for free on npm (`npm install -D cypress`). More importantly, [it has support in the testing library family](https://testing-library.com/docs/cypress-testing-library/intro/). You'll notice some slight differences, but it's more or less the same as the other members of the testing library family. What's great about this is that: 1) You won't have to write your own functions for finding something in the DOM, and 2) You'll work with a simple and re-usable API. Again, transferrable skills!
+
+You'll see some examples of Cypress Testing Library here, but you should definitely check out the documentation for both Cypress and Cypress Testing Library for additional help. In this project, some files (and comments) that `cypress` creates by default were kept so that they could be referenced. However, some files -- such as those in the `fixtures` folder -- were removed. You can learn more about `fixtures` by visiting the Cypress (not Cypress Testing Library) documentation.
 
 ### Mock Data and APIs
 
