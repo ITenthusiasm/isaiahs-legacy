@@ -393,6 +393,8 @@ One good option is [Cypress](https://docs.cypress.io/guides/overview/why-cypress
 
 You'll see some examples of Cypress Testing Library here, but you should definitely check out the documentation for both Cypress and Cypress Testing Library for additional help. In this project, some files (and comments) that `cypress` creates by default were kept so that they could be referenced. However, some files -- such as those in the `fixtures` folder -- were removed. You can learn more about `fixtures` by visiting the Cypress (not Cypress Testing Library) documentation.
 
+When running E2E tests, remember to start any necessary applications beforehand (eg. your web app or your database)!
+
 ### Mock Data and APIs
 
 In an ideal world, if you're performing E2E tests or just testing out your new frontend features, you'd be able to wire up your frontend to your backend to verify that everything behaves as expected. Unfortunately, things don't always turn out this way. It's possible for your frontend to be finished before the backend. If you're developing both, this isn't a big problem. But if a separate team is developing the API your application consumes, then this will cause some trouble.
