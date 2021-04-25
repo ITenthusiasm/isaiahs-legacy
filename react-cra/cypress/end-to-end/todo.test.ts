@@ -1,7 +1,6 @@
 import faker from "faker";
 
 describe("Todos", () => {
-  let user: ProjectTypes.UserInfo;
   const { baseUrl } = Cypress.config();
 
   before(() => {
@@ -11,9 +10,6 @@ describe("Todos", () => {
       cy.findByLabelText(/password/i).type(createdUser.password);
       cy.findByText(/sign in/i).click();
       cy.url().should("equal", `${baseUrl}/todos`);
-
-      // Assign necessary variables
-      user = createdUser;
     });
   });
 

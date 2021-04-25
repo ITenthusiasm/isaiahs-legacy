@@ -1,6 +1,6 @@
 // Enables typing custom commands added to Cypress
 declare namespace Cypress {
-  interface Chainable<Subject> {
+  interface Chainable {
     /**
      * Creates a user with random credentials in the database.
      */

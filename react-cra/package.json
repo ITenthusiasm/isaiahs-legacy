@@ -9,6 +9,7 @@
     "test:e2e": "cypress open",
     "test:headless-e2e": "cypress run --headless --browser chrome",
     "eject": "react-scripts eject",
+    "lint": "eslint **/*.{ts,tsx}",
     "reset-json-db": "cd .. && npm run reset-json-db",
     "check-types": "tsc --noEmit"
   },

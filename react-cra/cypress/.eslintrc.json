@@ -5,7 +5,13 @@
   },
   "extends": [
     "plugin:cypress/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["eslint-plugin-cypress"]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["eslint-plugin-cypress", "@typescript-eslint"],
+  "rules": {
+    // Watching https://github.com/cypress-io/eslint-plugin-cypress/issues/80
+    "cypress/no-unnecessary-waiting": "off"
+  }
 }
