@@ -2,28 +2,31 @@
 
 This file contains a compilation of some things I've learned about React standards and tools. Given the length, it's likely best used as a reference. As you go through it, you'll be especially helped by using this project's code as an example to look at.
 
-This project was created by running `npx create-react-app react-cra --template --typescript`. Edits were applied after the initial installation. I tried to remove things that would only be distractions, but I left in some things that CRA provides like `reportWebVitals`. Note that the very end of this file holds the default `README.md` information that CRA generates.
+This project was created by running `npx create-react-app react-cra --template typescript`. Edits were applied after the initial installation. I tried to remove things that would only be distractions, but I left in some things that CRA provides like `reportWebVitals`. Note that the very end of this file holds the default `README.md` information that CRA generates.
 
 Although this project is intended to help get you familiar with React and other tools, it is not a _tutorial_ on React. This project is intended to give you an idea of useful standards and tools while providing some simple examples. For information on exactly how these tools work, see the documentation:
 
 - [React](https://reactjs.org/docs/getting-started.html)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-- [Redux](https://redux.js.org/introduction/getting-started)
 - [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Redux](https://redux.js.org/introduction/getting-started)
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
 - [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro)
+- [ESLint](https://eslint.org/)
+- [Babel](https://babeljs.io/)
 
 Beyond this, consult the list of useful resources mentioned in the root of this repository.
 
 ## Configuration
 
-CRA handles all of the important configurations for you, and it leaves a couple ways to modify the configurations. Please note that instead of using regular configuration files, CRA requires you to edit `package.json` to adjust the settings. Some settings are hidden inside the package itself, with the intent that you'll never modify them.
+CRA handles all of the important configurations for you, and it leaves a couple ways to modify the configurations. Please note that instead of using regular configuration files, CRA requires you to edit `package.json` to adjust the settings. Some settings are hidden inside the installed package itself, with the intent that you'll never modify them.
 
-For more information on how to customize the configurations, see [Create React App's official documentation](https://create-react-app.dev/docs/getting-started). In this project, the ESLint config and Jest config are modified.
+For more information on how to customize the configurations, see [Create React App's official documentation](https://create-react-app.dev/docs/getting-started). In this project, the ESLint config and Jest config are modified (through `package.json`).
 
-One additional tool is used beyond what CRA provides: [Prettier](https://prettier.io/). It's an excellent tool for formatting frontend code.
+One additional tool is used beyond what CRA provides: [Prettier](https://prettier.io/). It's an excellent tool for formatting JS, TS, HTML, and more.
 
 ## Folder Structure
 
@@ -61,7 +64,7 @@ The `components` folder contains all of the components used for your application
 
 Personal preference: I also put commonly re-used components (eg. a custom styled button that I expect the rest of my application to use) under `components/_common`. That way I have an easy place to look for (or add to) my common re-usables. (Using `_common` puts the folder above other regularly named folders.)
 
-The `pages` folder contains any components that represent an entire page of your application. For instance, the `Home` and `Todos` pages in this project are placed under the `pages` folder. These components _do not_ typically contain components that make up only part of a page.
+The `pages` folder (also called `views`) contains any components that represent an entire page of your application. For instance, the `Home` and `Todos` pages in this project are placed under the `pages` folder. These files _do not_ typically contain components that make up only part of a page.
 
 The `router` folder contains logic for setting up your router, like initializing the `history`. (Components that act as enhanced `Route`s do not go here. They go under `components`.) I picked this up from Vue. In React, if your application is simple enough, you may not need a `router` folder.
 
@@ -89,7 +92,7 @@ import { ComponentA, ComponentB, ComponentC } from "./components";
 
 This saves more lines and helps you to reason more easily about your file/folder structure.
 
-**Secondly**, barrel files help you think more in terms of "groups" or "domains". Referring to the previous code example, you'll notice that the simpler import that uses barrel files helps you get what you need from one place. "Ah, for components, I just need to go here. For anything related to services, I go there."
+**Secondly**, barrel files help you think more in terms of "groups" or "domains". Referring to the previous code example, you'll notice that the simpler import that uses barrel files helps you get what you need from one place: "Ah, for components, I just need to go here. For anything related to services, I go there."
 
 **Finally**, barrel files help you communicate what you expect to be "accessible to the outside world", and what you expect to remain "private". In this project, you'll notice that `src/components/index.ts` _does not_ export the `Notifications` component. That's because `Notifications` is only intended to be used with the `NotificationsContainer`, which _is_ pubilcly accessible to the outside world.
 
@@ -119,9 +122,9 @@ import ComponentA from "./ComponentA";
 
 ### Test Folder Structure
 
-After watching Kent C. Dodd's [guide on testing JavaScript](https://testingjavascript.com/), I recommend having a `__tests__` directory in every folder with components/functions that need testing. (See this project's structure as an example). In addition, you should label all test files as `*.test.ts`/`*.test.tsx` (or `*.spec.ts`/`*.spec.tsx` if you prefer) for further clarity. You can adjust the file extension based on whether you use JavaScript or TypeScript, but if you have a TypeScript project I highly recommend writing your tests in TypeScript.
+After watching Kent C. Dodd's [guide on testing JavaScript](https://testingjavascript.com/), I recommend having a `__tests__` directory in every folder with components/functions that need testing. (See this project's structure as an example). In addition, you should label all test files as `*.test.ts`/`*.test.tsx` (or `*.spec.ts`/`*.spec.tsx` if you prefer) for further clarity. You can adjust the file extension based on whether you use JavaScript or TypeScript. If you have a TypeScript project, I highly recommend writing your tests in TypeScript as well.
 
-I can recommend this structure with confidence from my personal experiences. It enables you to easily find and add tests, all without over-expanding your IDE's file tree. Here are other common structures I've seen/tried and reasons why I would discourage them (comparatively).
+I can recommend this file structure with confidence from my personal experiences. It enables you to easily find and add tests, all without over-expanding your IDE's file tree. Here are other common structures I've seen/tried and reasons why I would discourage them (comparatively).
 
 **NOTE**: If you're already convinced of the test file/folder structure I recommended, you can skip to the next section.
 
@@ -240,7 +243,7 @@ src/
     rootReducer.ts
 ```
 
-There are two main reasons I encourage this folder structure. First, it helps you reason about redux better. I have seen many a people -- professional or not -- misuse redux because they don't understand how it truly works. For instance, many people don't understand that a combined redux store is composed of multiple reducers that manage their own _portion_ of the total state. Divinding your `store` folder by reducers helps reinforce this proper understanding of redux.
+There are two main reasons I encourage this folder structure. First, it helps you reason about redux better. I have seen many a people -- professional or not -- misuse redux because they don't understand how it truly works. For instance, many people don't understand that a combined redux store is composed of multiple reducers that manage their own _portion_ of the total state. Dividing your `store` folder by reducers helps reinforce this proper understanding of redux.
 
 On a similar note, having a `store/initialState` file that holds the initial global state helps reinforce the idea that the final store you export holds all of the state. By having your reducers default to a portion of that initial state, you're again reinforcing the idea that there's a _global_ state from which each reducer takes a _portion_.
 
@@ -308,7 +311,7 @@ The original file structure I recommended not only helps reduce visual overload,
 
 ### Test Utilities
 
-Although it's good to put your tests under `__tests__` sub folders as mentioned previously, you may want a place to put test utilities. So where should you put your configuration files for your test runner (eg. `jest.config.js`)? Where should you put helpers that _only your tests_ will use?
+Although it's good to put your tests under `__tests__` sub folders as mentioned previously, you may want a place to put test utilities. So... where should you put your configuration files for your test runner (eg. `jest.config.js`)? Where should you put helpers that _only your tests_ will use?
 
 For these situations, I recommend creating a folder called `test-utils` (or something similar) in the root of your project folder. That way, you have an easy place to find your test helpers, and it's kept separate from your actual application.
 
@@ -342,7 +345,7 @@ Redux is a popular tool for complex state management in React. Unfortunately, it
 
 Although many despise redux, pretty much everyone agrees that if your state management will get complex, redux can be a good solution. However, other good options exist.
 
-If you're simply trying to avoid ugly [prop drilling](https://kentcdodds.com/blog/prop-drilling), consider [React Context](https://reactjs.org/docs/context.html). If you require state management but not complex state management, [MobX](https://mobx.js.org/README.html) seems to be a popular option among many. If you're **_only_** using redux to store information fetched from databases _and_ are using graphql, consider [Apollo](https://www.apollographql.com/docs/react/).
+If you're simply trying to avoid ugly [prop drilling](https://kentcdodds.com/blog/prop-drilling), consider [React Context](https://reactjs.org/docs/context.html). If you require state management but not complex state management, [MobX](https://mobx.js.org/README.html) seems to be a popular option among many. (I personally wouldn't use it though.) If you're **_only_** using redux to store information fetched from databases _and_ are using graphql, consider [Apollo](https://www.apollographql.com/docs/react/).
 
 You can always use redux in conjunction with whichever tool you choose if you end up needing it. You're free to use only redux as well. But consider if your application _truly_ needs Redux before using it.
 
@@ -374,11 +377,11 @@ When writing tests for your React components, the recommened approach is to use 
 
 There are two main advantages to using `React Testing Library` over other options.
 
-First `React Testing Library` is significantly more easy to work with compared to other options, and it helps you build more robust tests while steering you away from building brittle, unreliable ones. In some instances, it even helps you become a better frontend developer. (For instance, you may become more aware of which attributes you _should_ be using for your elements.)
+First `React Testing Library` is significantly more easy to work with compared to other options, and it helps you build more robust tests while steering you away from building brittle, unreliable tests. In some instances, it even helps you become a better frontend developer. (For instance, you may become more aware of which attributes you _should_ be using for your elements.)
 
 Second, `React Testing Library` helps you approach and reason about your tests as if you were a literal user interacting with your UI.
 
-Third, `React Testing Library` gives you _highly transferrable skills_. There is in fact an entire family of Testing Libraries for the various frontend frameworks! There are even testing libraries for E2E testing packages like `Cypress`. This means that if you move on to Vue, Svelte, or some other frontend framework, you'll be able to write tests with the exact same API (barring some minor nuances for setup). Notice that the tests here are nearly identical to the ones I wrote in the Vue verssion of this project. This saves a **_a lot_** on developer time. And it's even better that you know you'll be writing robust tests as you use the same code.
+Third, `React Testing Library` gives you _highly transferrable skills_. There is in fact an entire family of Testing Libraries for the various frontend frameworks! There are even testing libraries for E2E testing packages like `Cypress`. This means that if you move on to Vue, Svelte, or some other frontend framework, you'll be able to write tests with the exact same API (barring some minor nuances for setup). Notice that the tests here are nearly identical to the ones I wrote in the Vue version of this project. This saves a **_a lot_** on developer time. And it's even better that you know you'll be writing robust tests as you use the same code.
 
 ### End to End (E2E) Testing
 
@@ -428,7 +431,7 @@ Kent C. Dodds (you'll hear his name a lot here) has some great input on testing 
 
 ### Does Your Frontend _Really_ Need Unit Tests?
 
-This is kind of continuing a little bit from the previous section. Unit tests make more sense when you're working with specific functions or methods. But when you're dealing with a UI, integration tests are more practical. Instead of worrying about whether you have enough unit tests, you should be asking if you have enough tests to cover your UI cases.
+This is kind of continuing a little bit from the previous section. Unit tests make more sense when you're working with specific functions or methods. But when you're dealing with a UI, integration tests are more practical. Instead of worrying about whether you have enough unit tests, you should be asking if you have enough tests to cover your UI's use cases.
 
 This is especially important to think about when stores get involved. What's the point of testing a store in isolation if it's only meaningful when it's hooked up to the UI? There may be valid use cases for testing part of the store in isolation, but most of the time it's more practical to test your components as if they're hooked up to the store (if they rely on one). This will improve your confidence in how the UI will respond to any interactions. Additionally, it will enable you to test your components and your store at the same time.
 
@@ -448,7 +451,7 @@ You know who has some helpful [comments on code coverage](https://kentcdodds.com
 
 # Keep Your Dependencies Simple and Organized (`package.json` and `package-lock.json`)!
 
-Please _please_ **_please_** keep your dependencies simple and organized! I've seen several nightmarish `package.json`s, many of which included numerous outdated and even _unused_ dependencies. Other people shove all packages directly into `dependencies` in `package.json`. Properly managing your packages will enable you to provide greater clarity to how your project is structured, amidst other things.
+Please _please_ **_please_** keep your dependencies simple and organized! I've seen several nightmarish `package.json`s, many of which included numerous outdated and even _unused_ dependencies. Other people shove _all_ packages directly into `dependencies` in `package.json`. Properly managing your packages will enable you to provide greater clarity to how your project is structured, amidst other things.
 
 ### Unused Packages
 
