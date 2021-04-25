@@ -6,12 +6,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:cover": "jest --coverage",
+    "test:cover": "react-scripts test --coverage --watchAll=false",
     "test:e2e": "cypress open",
     "test:headless-e2e": "cypress run --headless --browser chrome",
     "eject": "react-scripts eject",
     "lint": "eslint **/*.{ts,tsx}",
     "check-types": "tsc --noEmit && cd cypress && tsc --noEmit",
+    "start-db": "cd .. && npm run start-db",
     "reset-json-db": "cd .. && npm run reset-json-db"
   },
   "dependencies": {
@@ -81,10 +82,6 @@
         "lines": 80
       }
     },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/cypress/"
-    ],
     "transform": {
       "\\.tsx?$": [
         "babel-jest",
