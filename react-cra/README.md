@@ -321,7 +321,7 @@ For these situations, I recommend creating a folder called `test-utils` (or some
 
 Use of the `public` folder may vary slightly depending on whether you build your application from scratch or use tools like CRA. Since this part of the project was built using CRA, see the [docs](https://create-react-app.dev/docs/using-the-public-folder/) for more info.
 
-# Hooks
+## Hooks
 
 React hooks are a new feature that was added to React in v16.8. In short, it allows functional components to manage local state. However, the state management that hooks provide is much more flexible than what you get with regular class components, and it makes your components easier to understand. You can refer to the [documentation](https://reactjs.org/docs/hooks-intro.html) or checkout people like Ben Awad or Kent C. Dodds for help with learning hooks.
 
@@ -339,7 +339,7 @@ This problem is also nullified with hooks because they will return exactly what 
 
 It may be hard for you to imagine the benefit this brings from just a few words. You can catch a glimpse of the benefit by observing how this project uses Redux without relying on something like `connect`.
 
-# Should You Use Redux?
+## Should You Use Redux?
 
 Redux is a popular tool for complex state management in React. Unfortunately, it's also a complicated tool that requires a noticeable amount of boilerplate. In fact, several people who use it in the professional world don't actually understand how it works or how it _should_ be used. Because of this, many have come to dread redux and tend to ignore it.
 
@@ -354,7 +354,7 @@ In the meantime, here are some ways redux **_should not_** be used:
 1. Don't use redux for styling your components. There are other solutions out there that are far better and more efficient.
 2. Don't connect every component to redux. This creates confusion around a given component's actual responsibilities, and it can quickly make your code difficult to follow. Components should only be connected to redux when _necessary_.
 
-# Writing Tests
+## Writing Tests
 
 ### Test Runners
 
@@ -451,7 +451,7 @@ So use code coverage as a guide to help you remember any use cases you may have 
 
 You know who has some helpful [comments on code coverage](https://kentcdodds.com/blog/how-to-know-what-to-test)? Yup! Kent C. Dodds. (I hope you find all these articles helpful. :eyes:)
 
-# Keep Your Dependencies Simple and Organized (`package.json` and `package-lock.json`)!
+## Keep Your Dependencies Simple and Organized (`package.json` and `package-lock.json`)!
 
 Please _please_ **_please_** keep your dependencies simple and organized! I've seen several nightmarish `package.json`s, many of which included numerous outdated and even _unused_ dependencies. Other people shove _all_ packages directly into `dependencies` in `package.json`. Properly managing your packages will enable you to provide greater clarity to how your project is structured, amidst other things.
 
@@ -503,7 +503,7 @@ Finally, if you're building a library/application and using `package.json` to tr
 
 Configuring your development tools (eg. ESLint and Jest) in your `package.json` file only makes the package file even more bloated and hard to follow. Try to keep your configurations to individual files where possible. (To be fair, sometimes boilerplates like CRA make this difficult or impossible.)
 
-# Styles
+## Styles
 
 Unlike Vue, React does not have a common, clean convention for styling your components. It's typically recommened to use CSS to style your components. You can do that with raw CSS files (I wouldn't necessarily recommend that for React), CSS Modules, Tailwind, Bootstrap, or CSS-in-JS solutions like `emotion` or `react-jss`.
 
@@ -515,7 +515,7 @@ If the solution you use permits (eg. `react-jss` or inline styles), I'd encourag
 
 (Note: If you're only against putting styles at the end of a file because of a vague idea of "Separation of Concerns", I recommend you read my comments on Single File Components in the Vue version of this large project.)
 
-# Avoid `dangerouslySetInnerHTML` Whenever Possible...
+## Avoid `dangerouslySetInnerHTML` Whenever Possible...
 
 That should go without saying, but I've seen things. Whenever possible, please consider other options. It will make your app more secure and potentially more readable. If your app heavily relies on `dangerouslySetInnerHTML`, you may want to reconsider your approach (How should you get your markup?) or your tool (Should you even use React?).
 
