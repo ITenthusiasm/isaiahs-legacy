@@ -26,7 +26,7 @@
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/user-event": "^13.1.5",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
     "@types/json-schema-faker": "^0.5.1",
@@ -42,7 +42,7 @@
     "faker": "^5.5.3",
     "json-schema-faker": "^0.5.0-rcv.34",
     "prettier": "^2.2.1",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^4.0.3",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.1"
   },
