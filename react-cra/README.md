@@ -20,6 +20,40 @@ Although this project is intended to help get you familiar with React and other 
 
 Beyond this, consult the list of useful resources mentioned in the root of this repository.
 
+## Table of Contents
+
+1. [Configuration](#configuration)
+2. [Folder Structure](#folder-structure)
+   - [Typical Frontend Folder Structure (General)](#typical-frontend-folder-structure-general)
+   - [Barrel Files](#barrel-files)
+   - [Test Folder Structure](#test-folder-structure)
+   - [Store Folder Structure (Redux Only)](#store-folder-structure-redux-only)
+   - [Test Utilities](#test-utilities)
+   - [The `public` Folder](#the-public-folder)
+3. [Hooks](#hooks)
+4. [Should You Use Redux?](#should-you-use-redux)
+5. [Writing Tests](#writing-tests)
+   - [Test Runners](#test-runners)
+   - [Testing React Components](#testing-react-components)
+   - [Why React Testing Library?](#why-react-testing-library)
+   - [End to End (E2E) Testing](#end-to-end-e2e-testing)
+   - [Mock Data and APIs](#mock-data-and-apis)
+   - [A Different Way to Think about Testing](#a-different-way-to-think-about-testing)
+   - [Does Your Frontend _Really_ Need Unit Tests?](#does-your-frontend-really-need-unit-tests)
+   - [What about Test Coverage?](#what-about-test-coverage)
+6. [Keep Your Dependencies Simple and Organized](#keep-your-dependencies-simple-and-organized-packagejson-and-package-lockjson)
+   - [Unused Packages](#unused-packages)
+   - [Unnecessary Packages](#unnecessary-packages)
+   - [Outdated Packages](#outdated-packages)
+   - [Properly Organizing Your Dependencies](#properly-organizing-your-dependencies)
+   - [Respecting `package-lock.json`](#respecting-package-lockjson)
+   - [Leaving Configurations in Configuration Files](#leaving-configurations-in-configuration-files)
+7. [Styles](#styles)
+8. [Avoid `dangerouslySetInnerHTML` Whenever Possible...](#avoid-dangerouslysetinnerhtml-whenever-possible)
+9. [Create React App's Original README Contents](#getting-started-with-create-react-app)
+
+If this file is too big for your liking, you can visit the [local] `notes` folder instead. :)
+
 ## Configuration
 
 CRA handles all of the important configurations for you, and it leaves a couple ways to modify the configurations. Please note that instead of using regular configuration files, CRA requires you to edit `package.json` to adjust the settings. Some settings are hidden inside the installed package itself, with the intent that you'll never modify them.
