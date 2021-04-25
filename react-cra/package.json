@@ -10,8 +10,8 @@
     "test:headless-e2e": "cypress run --headless --browser chrome",
     "eject": "react-scripts eject",
     "lint": "eslint **/*.{ts,tsx}",
-    "reset-json-db": "cd .. && npm run reset-json-db",
-    "check-types": "tsc --noEmit && cd cypress && tsc --noEmit"
+    "check-types": "tsc --noEmit && cd cypress && tsc --noEmit",
+    "reset-json-db": "cd .. && npm run reset-json-db"
   },
   "dependencies": {
     "axios": "^0.21.1",
