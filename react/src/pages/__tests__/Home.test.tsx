@@ -141,9 +141,8 @@ describe("Home", () => {
     jest.spyOn(UserService, "userExists").mockResolvedValue(true);
 
     const store = initializeStore(defaultState);
-    const { getByText, getByLabelText, findByText } = renderComponentWithStore(
-      store
-    );
+    const { getByText, getByLabelText, findByText } =
+      renderComponentWithStore(store);
 
     const username = getByLabelText(/username/i);
     const password = getByLabelText(/password/i);
@@ -190,9 +189,8 @@ describe("Home", () => {
     jest.spyOn(UserService, "getUser").mockResolvedValue(undefined);
 
     const store = initializeStore(defaultState);
-    const { getByText, getByLabelText, findByText } = renderComponentWithStore(
-      store
-    );
+    const { getByText, getByLabelText, findByText } =
+      renderComponentWithStore(store);
 
     const username = getByLabelText(/username/i);
     const password = getByLabelText(/password/i);

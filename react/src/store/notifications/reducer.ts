@@ -7,7 +7,7 @@ let nextId = 1;
 function notifications(state = initialState.notifications, action: NotificationsAction): NotificationsState {
   switch (action.type) {
     case NotificationsTypes.ADD_NOTIFICATION:
-      return [...state, { id: nextId++, message: action.message }];
+      return [...state, { id: nextId++, message: action.message }]; // eslint-disable-line no-plusplus
     case NotificationsTypes.REMOVE_NOTIFICATION:
       return state.filter((notification) => notification.id !== action.id);
     default:

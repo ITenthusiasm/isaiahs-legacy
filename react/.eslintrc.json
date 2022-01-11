@@ -1,0 +1,78 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+      }
+    }
+  },
+  "rules": {
+    // Core Configurations
+    "func-names": "off",
+
+    // Core Configurations That Conflict with TS
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "error",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
+
+    // React
+    "react/jsx-props-no-spreading": "off", // TS usually prevents this from being a problem
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+
+    // JSX Accessibility
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }], // Override Airbnb
+
+    // Import
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "d.ts": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts?(x)",
+          "server/index.ts",
+          "test-utils/mock-data/**/*",
+          "webpack.config*.{j,t}s"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/**/reducer.ts"],
+      "rules": { "default-param-last": "off" }
+    },
+    {
+      "files": ["server/**/*", "src/store/**/*"],
+      "rules": { "no-console": "off" }
+    },
+    {
+      "files": ["src/**/*.tsx"],
+      "rules": { "@typescript-eslint/no-use-before-define": "off" }
+    }
+  ]
+}

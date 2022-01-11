@@ -34,13 +34,13 @@ describe("App", () => {
     const message = "This is a notification";
     const notifications = [{ id: 1, message: "This is a notification" }];
 
-    const store = initializeStore({
+    const localStore = initializeStore({
       user: null,
       todos: [],
       notifications,
     });
 
-    const { getByText } = renderComponentWithStore(store);
+    const { getByText } = renderComponentWithStore(localStore);
 
     const notification = getByText(message);
     expect(notification).toBeInTheDocument();

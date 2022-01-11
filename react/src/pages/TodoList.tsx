@@ -20,20 +20,20 @@ function TodoList() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const todo = { userId: user!.id, text: newTodo.trim() };
+    const todo = { userId: user.id, text: newTodo.trim() };
 
     if (todo.text) dispatch(addTodo(todo));
     setNewTodo("");
   }
 
   if (!user) {
-    console.log("You arrived at this page before a user was loaded! 😔");
+    console.log("You arrived at this page before a user was loaded! 😔"); // eslint-disable-line no-console
     return <div style={styles.info}>Login to see your todos!</div>;
   }
 
   return (
     <div style={styles.container}>
-      <h1>{user.name}'s Todos</h1>
+      <h1>{user.name}&apos;s Todos</h1>
 
       <form onSubmit={handleSubmit}>
         <label style={styles.labels} htmlFor="addTodo">
@@ -57,7 +57,7 @@ function TodoList() {
 
 function mapStoreState(state: RootState) {
   return {
-    user: state.user,
+    user: state.user as NonNullable<RootState["user"]>,
     todos: state.todos,
   };
 }
