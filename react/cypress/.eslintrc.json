@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "env": {
+    "cypress/globals": true
+  },
+  "extends": [
+    "plugin:cypress/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["eslint-plugin-cypress", "@typescript-eslint"]
+}
