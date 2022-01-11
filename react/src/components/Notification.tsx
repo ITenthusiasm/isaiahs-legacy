@@ -18,9 +18,7 @@ function Notification({ id, message }: NotificationProps) {
       5000
     );
 
-    return () => {
-      clearTimeout(timerRef.current);
-    };
+    return () => clearTimeout(timerRef.current);
   });
 
   return <div style={styles.message}>{message}</div>;
