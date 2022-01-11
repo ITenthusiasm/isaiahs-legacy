@@ -9,9 +9,5 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["eslint-plugin-cypress", "@typescript-eslint"],
-  "rules": {
-    // Watching https://github.com/cypress-io/eslint-plugin-cypress/issues/80
-    "cypress/no-unnecessary-waiting": "off"
-  }
+  "plugins": ["eslint-plugin-cypress", "@typescript-eslint"]
 }

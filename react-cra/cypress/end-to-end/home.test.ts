@@ -48,8 +48,7 @@ describe("Home", () => {
 
       // Error notification
       cy.findByText(errorText).should("exist");
-      cy.wait(5000);
-      cy.findByText(errorText).should("not.exist");
+      cy.findByText(errorText, { timeout: 5000 }).should("not.exist");
     });
   });
 
@@ -79,8 +78,7 @@ describe("Home", () => {
 
       // Error notification
       cy.findByText(errorText).should("exist");
-      cy.wait(5000);
-      cy.findByText(errorText).should("not.exist");
+      cy.findByText(errorText, { timeout: 5000 }).should("not.exist");
     });
   });
 });
