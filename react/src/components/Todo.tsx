@@ -11,13 +11,13 @@ function Todo({ id, text }: TodoProps) {
   const dispatch = useDispatch();
 
   return (
-    <div style={styles.container}>
+    <li style={styles.container}>
       <div style={styles.text}>{text}</div>
 
       <button type="button" style={styles.icon} onClick={() => dispatch(removeTodo(id))}>
         &#215;
       </button>
-    </div>
+    </li>
   );
 }
 
@@ -28,7 +28,7 @@ const styles: Record<TodoStyles, React.CSSProperties> = {
     padding: "0.5rem",
     border: "1px solid black",
     borderRadius: "5px",
-    margin: "0.5rem",
+    margin: "0.5rem 0",
     width: "14rem",
     textAlign: "left",
 

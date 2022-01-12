@@ -43,11 +43,11 @@ function TodoList() {
         </button>
       </form>
 
-      <div>
+      <ul style={styles.todoList}>
         {todos.map((todo) => (
           <Todo key={todo.id} {...todo} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
@@ -59,7 +59,7 @@ function mapStoreState(state: RootState) {
   };
 }
 
-type TodoListStyles = "container" | "labels" | "info" | "button";
+type TodoListStyles = "container" | "labels" | "info" | "button" | "todoList";
 
 const styles: Record<TodoListStyles, React.CSSProperties> = {
   container: {
@@ -78,6 +78,11 @@ const styles: Record<TodoListStyles, React.CSSProperties> = {
   },
   button: {
     marginLeft: "2rem",
+  },
+  todoList: {
+    padding: "0",
+    margin: "0",
+    listStyle: "none",
   },
 };
 
