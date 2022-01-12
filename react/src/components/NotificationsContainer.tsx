@@ -7,11 +7,11 @@ function NotificationsContainer() {
   const notifications = useSelector(mapStoreState);
 
   return (
-    <div style={styles.notificationsContainer}>
+    <ul style={styles.notificationsContainer}>
       {notifications.map((notification) => (
         <Notification key={notification.id} {...notification} />
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -31,6 +31,10 @@ const styles: Record<NotificationsContainerStyles, React.CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
+    padding: "0",
+    margin: "0",
+    listStyle: "none",
   },
 };
 
