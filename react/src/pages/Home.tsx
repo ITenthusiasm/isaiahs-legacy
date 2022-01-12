@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
@@ -30,9 +30,7 @@ function Home() {
     if (action === "sign-in") await dispatch(getUser(userInfo));
   }
 
-  function logout() {
-    dispatch(logoutUser());
-  }
+  const logout = useCallback(() => dispatch(logoutUser()), []);
 
   if (user) {
     return (
@@ -49,9 +47,9 @@ function Home() {
 
         <div style={styles.info}>
           Not you?
-          <span style={styles.links} onClick={logout}>
+          <NavLink to="/" style={styles.links} onClick={logout}>
             Logout
-          </span>
+          </NavLink>
         </div>
       </div>
     );
