@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Todo } from "../components";
 import { addTodo, getTodos } from "../store/todos/actions";
@@ -8,22 +8,19 @@ function TodoList() {
   const { user, todos } = useSelector(mapStoreState);
   const dispatch = useDispatch();
 
-  const [newTodo, setNewTodo] = useState("");
-
   useEffect(() => {
     if (user) dispatch(getTodos(user.id));
   }, [user, dispatch]);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewTodo(event.target.value);
-  }
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const todo = { userId: user.id, text: newTodo.trim() };
+    const form = event.currentTarget;
+
+    const todoInput = form.elements.namedItem("addTodo") as HTMLInputElement;
+    const todo = { userId: user.id, text: todoInput.value.trim() };
 
     if (todo.text) dispatch(addTodo(todo));
-    setNewTodo("");
+    form.reset();
   }
 
   if (!user) {
@@ -39,7 +36,7 @@ function TodoList() {
         <label style={styles.labels} htmlFor="addTodo">
           Add Todo
         </label>
-        <input id="addTodo" value={newTodo} onChange={handleChange} />
+        <input id="addTodo" />
 
         <button type="submit" style={styles.button}>
           add
