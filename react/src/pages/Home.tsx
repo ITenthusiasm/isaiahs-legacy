@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
@@ -9,22 +9,15 @@ function Home() {
   const user = useSelector(mapStoreState);
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  function updateUsername(event: React.ChangeEvent<HTMLInputElement>) {
-    setUsername(event.target.value);
-  }
-
-  function updatePassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value);
-  }
-
   async function login(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault(); // Prevent page reload on form submissions
+    const form = event.currentTarget.form as HTMLFormElement;
+    const username = (form.elements.namedItem("username") as HTMLInputElement).value;
+    const password = (form.elements.namedItem("password") as HTMLInputElement).value;
     if (!username || !password) return;
 
-    const userInfo = { username, password };
     const action = event.currentTarget.name;
+    const userInfo = { username, password };
 
     if (action === "sign-up") await dispatch(addUser(userInfo));
     if (action === "sign-in") await dispatch(getUser(userInfo));
@@ -35,7 +28,7 @@ function Home() {
   if (user) {
     return (
       <div style={styles.container}>
-        <h2>Home</h2>
+        <h1>Home</h1>
 
         <div style={styles.info}>
           Welcome! Click
@@ -57,32 +50,33 @@ function Home() {
 
   return (
     <div style={styles.container}>
-      <h2>Login</h2>
+      <h1>Login</h1>
 
-      <div>
+      <form>
         <div>
           <label style={styles.labels} htmlFor="username">
             Username
           </label>
-          <input id="username" value={username} onChange={updateUsername} />
+          <input id="username" />
         </div>
 
         <div>
           <label style={styles.labels} htmlFor="password">
             Password
           </label>
-          <input id="password" value={password} onChange={updatePassword} />
+          <input id="password" />
         </div>
 
         <div style={styles.actions}>
           <button name="sign-up" type="button" onClick={login}>
             sign up
           </button>
-          <button name="sign-in" type="button" onClick={login}>
+
+          <button name="sign-in" type="submit" onClick={login}>
             sign in
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
