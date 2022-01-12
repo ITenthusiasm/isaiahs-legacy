@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Todo } from "../components";
 import { addTodo, getTodos } from "../store/todos/actions";
-import { RootState } from "../store/types";
+import type { RootState } from "../store/types";
 
 function TodoList() {
   const { user, todos } = useSelector(mapStoreState);

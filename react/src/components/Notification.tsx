@@ -14,7 +14,6 @@ function Notification({ id, message }: NotificationProps) {
 
   useEffect(() => {
     timerRef.current = window.setTimeout(() => dispatch(removeNotification(id)), 5000);
-
     return () => clearTimeout(timerRef.current);
   });
 

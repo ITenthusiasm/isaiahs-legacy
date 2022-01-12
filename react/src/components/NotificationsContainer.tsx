@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Notification from "./Notification";
-import { RootState } from "../store/types";
+import type { RootState } from "../store/types";
 
 function NotificationsContainer() {
   const notifications = useSelector(mapStoreState);

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addUser, getUser } from "../store/user/actions";
 import { logoutUser } from "../store/globalActions";
-import { RootState } from "../store/types";
+import type { RootState } from "../store/types";
 
 function Home() {
   const user = useSelector(mapStoreState);
