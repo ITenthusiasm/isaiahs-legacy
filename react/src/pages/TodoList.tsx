@@ -17,7 +17,7 @@ function TodoList() {
     const form = event.currentTarget;
 
     const todoInput = form.elements.namedItem("addTodo") as HTMLInputElement;
-    const todo = { userId: user.id, text: todoInput.value.trim() };
+    const todo = { userId: user?.id as string, text: todoInput.value.trim() };
 
     if (todo.text) dispatch(addTodo(todo));
     form.reset();
@@ -54,7 +54,7 @@ function TodoList() {
 
 function mapStoreState(state: RootState) {
   return {
-    user: state.user as NonNullable<RootState["user"]>,
+    user: state.user as RootState["user"],
     todos: state.todos,
   };
 }
