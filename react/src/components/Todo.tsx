@@ -13,11 +13,7 @@ function Todo({ id, text }: TodoProps) {
   return (
     <div style={styles.container}>
       <div style={styles.text}>{text}</div>
-      <button
-        type="button"
-        style={styles.icon}
-        onClick={() => dispatch(removeTodo(id))}
-      >
+      <button type="button" style={styles.icon} onClick={() => dispatch(removeTodo(id))}>
         &#215;
       </button>
     </div>

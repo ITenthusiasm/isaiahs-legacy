@@ -88,11 +88,7 @@ describe("Todo List", () => {
     jest.spyOn(TodosService, "getTodos").mockResolvedValueOnce([]);
 
     const store = initializeStore(defaultState);
-    const {
-      getByLabelText,
-      queryByText,
-      findByText,
-    } = renderComponentWithStore(store);
+    const { getByLabelText, queryByText, findByText } = renderComponentWithStore(store);
 
     expect(queryByText(text)).not.toBeInTheDocument();
 
@@ -146,8 +142,6 @@ describe("Todo List", () => {
     const button = queryByText("×") as HTMLElement;
     userEvent.click(button);
 
-    await waitFor(() =>
-      expect(queryByText(todoToDelete.text)).not.toBeInTheDocument()
-    );
+    await waitFor(() => expect(queryByText(todoToDelete.text)).not.toBeInTheDocument());
   });
 });

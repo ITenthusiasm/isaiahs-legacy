@@ -11,9 +11,5 @@ const middleware = [thunk];
  * @param initialState
  */
 export function initializeStore(initialState: Partial<RootState>) {
-  return createStore(
-    rootReducer,
-    initialState,
-    compose(applyMiddleware(...middleware))
-  );
+  return createStore(rootReducer, initialState, compose(applyMiddleware(...middleware)));
 }

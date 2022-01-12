@@ -13,10 +13,7 @@ function Notification({ id, message }: NotificationProps) {
   const timerRef = useRef<number>();
 
   useEffect(() => {
-    timerRef.current = window.setTimeout(
-      () => dispatch(removeNotification(id)),
-      5000
-    );
+    timerRef.current = window.setTimeout(() => dispatch(removeNotification(id)), 5000);
 
     return () => clearTimeout(timerRef.current);
   });

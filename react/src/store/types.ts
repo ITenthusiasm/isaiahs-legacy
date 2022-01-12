@@ -12,12 +12,7 @@ export interface RootState {
 }
 
 /** A thunk used for redux-thunk */
-export type Thunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type Thunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
 /** Extensions for the dispatch type. Used specifically for testing thunks. */
 export type DispatchExts = ThunkDispatch<RootState, void, AnyAction>;

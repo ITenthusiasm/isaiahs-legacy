@@ -18,6 +18,4 @@ interface RemoveNotificationAction {
 }
 
 /** A general Notifications Action for the Notifications Reducer */
-export type NotificationsAction =
-  | AddNotificationAction
-  | RemoveNotificationAction;
+export type NotificationsAction = AddNotificationAction | RemoveNotificationAction;

@@ -110,9 +110,7 @@ describe("Home", () => {
   it("Navigates the user to the Todos page after successful sign-up", async () => {
     const fakePassword = "FAKE_PASSWORD";
     jest.spyOn(UserService, "userExists").mockResolvedValue(false);
-    const mockPostUser = jest
-      .spyOn(UserService, "postUser")
-      .mockResolvedValue(fakeUser);
+    const mockPostUser = jest.spyOn(UserService, "postUser").mockResolvedValue(fakeUser);
 
     const store = initializeStore(defaultState);
     const { getByText, getByLabelText } = renderComponentWithStore(store);
@@ -141,8 +139,7 @@ describe("Home", () => {
     jest.spyOn(UserService, "userExists").mockResolvedValue(true);
 
     const store = initializeStore(defaultState);
-    const { getByText, getByLabelText, findByText } =
-      renderComponentWithStore(store);
+    const { getByText, getByLabelText, findByText } = renderComponentWithStore(store);
 
     const username = getByLabelText(/username/i);
     const password = getByLabelText(/password/i);
@@ -158,9 +155,7 @@ describe("Home", () => {
 
   it("Navigates to the Todos page after a successful sign-in", async () => {
     const fakePassword = "FAKE_PASSWORD";
-    const mockGetUser = jest
-      .spyOn(UserService, "getUser")
-      .mockResolvedValue(fakeUser);
+    const mockGetUser = jest.spyOn(UserService, "getUser").mockResolvedValue(fakeUser);
 
     const store = initializeStore(defaultState);
     const { getByText, getByLabelText } = renderComponentWithStore(store);
@@ -189,8 +184,7 @@ describe("Home", () => {
     jest.spyOn(UserService, "getUser").mockResolvedValue(undefined);
 
     const store = initializeStore(defaultState);
-    const { getByText, getByLabelText, findByText } =
-      renderComponentWithStore(store);
+    const { getByText, getByLabelText, findByText } = renderComponentWithStore(store);
 
     const username = getByLabelText(/username/i);
     const password = getByLabelText(/password/i);
