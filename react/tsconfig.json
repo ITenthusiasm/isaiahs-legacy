@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "./build",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,6 +16,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*", "server/**/*", "test-utils/**/*", "webpack.config.*"],
+  "include": ["src/**/*", "server/**/*", "test-utils/**/*"],
   "exclude": ["node_modules"]
 }
