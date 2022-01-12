@@ -13,9 +13,13 @@ function Todo({ id, text }: TodoProps) {
   return (
     <div style={styles.container}>
       <div style={styles.text}>{text}</div>
-      <span style={styles.icon} onClick={() => dispatch(removeTodo(id))}>
+      <button
+        type="button"
+        style={styles.icon}
+        onClick={() => dispatch(removeTodo(id))}
+      >
         &#215;
-      </span>
+      </button>
     </div>
   );
 }
@@ -38,10 +42,12 @@ const styles: Record<TodoStyles, React.CSSProperties> = {
     flex: 1,
   },
   icon: {
-    fontSize: "2rem",
-    fontWeight: "bold",
-    color: "red",
+    padding: "0",
+    border: "none",
 
+    fontSize: "2rem",
+    color: "red",
+    background: "none",
     cursor: "pointer",
   },
 };
