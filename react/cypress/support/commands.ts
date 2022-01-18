@@ -32,7 +32,7 @@ Cypress.Commands.add("createUser", () => {
   };
 
   cy.request({
-    url: "http://localhost:5000/users",
+    url: "/users",
     method: "POST",
     body: user,
   }).then(({ body }) => ({ ...body }));
