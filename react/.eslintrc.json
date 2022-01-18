@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
@@ -29,10 +25,7 @@
 
     // React
     "react/jsx-props-no-spreading": "off", // TS usually prevents this from being a problem
-    "react/jsx-filename-extension": [
-      "error",
-      { "extensions": [".jsx", ".tsx"] }
-    ],
+    "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".tsx"] }],
 
     // JSX Accessibility
     "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }], // Override Airbnb
