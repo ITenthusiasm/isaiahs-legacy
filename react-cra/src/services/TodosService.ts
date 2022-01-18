@@ -1,7 +1,7 @@
 import axios from "axios";
 import { TodoDetails } from "../types";
 
-const apiClient = axios.create({ baseURL: "http://localhost:5000" });
+const apiClient = axios.create({ baseURL: "http://localhost:5001" });
 
 const TodosService = {
   async postTodo(todo: Omit<TodoDetails, "id">) {

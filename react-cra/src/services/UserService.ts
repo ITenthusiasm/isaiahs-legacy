@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UserInfo } from "../types";
 
-const apiClient = axios.create({ baseURL: "http://localhost:5000" });
+const apiClient = axios.create({ baseURL: "http://localhost:5001" });
 
 const UserService = {
   async postUser(userInfo: Omit<UserInfo, "id">) {
